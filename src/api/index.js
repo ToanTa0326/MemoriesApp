@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API = axios.create({ baseURL: 'https://get-new-memories-project.herokuapp.com' })
+const API = axios.create({ baseURL: 'https://postcardapi.herokuapp.com/' })
 
 API.interceptors.request.use((req) => {
     if(localStorage.getItem('profile')){
