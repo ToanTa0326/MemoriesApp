@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API = axios.create({ baseURL: 'https://get-new-memories-project.herokuapp.com' })
+const API = axios.create({ baseURL: 'http://localhost:5000' })
 
 API.interceptors.request.use((req) => {
     if(localStorage.getItem('profile')){
@@ -17,6 +17,7 @@ export const creatPost = (newPost) => API.post('/posts', newPost);
 export const updatePost = (id, updatePost) => API.patch(`/posts/${id}`, updatePost);
 export const deletePost = (id) => API.delete(`/posts/${id}`);
 export const likePost = (id) => API.patch(`/posts/${id}/likePost`);
+export const commentPost = (value,id) => API.post(`/posts/${id}/commentPost`, { value });
 
 export const signIn = (formData) => API.post('/user/signin', formData);
 export const signUp = (formData) => API.post('/user/signup', formData);

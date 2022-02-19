@@ -1,4 +1,4 @@
-import {FETCH_ALL, DELETE, UPDATE, CREATE, GET_BY_SEARCH, GET_POST} from '../constants/actionTypes'
+import {FETCH_ALL, DELETE, UPDATE, CREATE, GET_BY_SEARCH, GET_POST, COMMENT} from '../constants/actionTypes'
 
 const posts = (state = {isLoading: true, posts: []},action) => {
     switch (action.type) {
@@ -23,6 +23,16 @@ const posts = (state = {isLoading: true, posts: []},action) => {
                 ...state,
                 post: action.payload,
             };
+        case COMMENT:
+            return {
+                ...state,
+                posts: state.posts.map((post) => {
+                    if(post._id === action.payload._id){
+                        return action.payload;
+                    }
+                    return post;
+                }) 
+            }
         case CREATE:
             return { ...state, posts: [...state.posts, action.payload]};
         case UPDATE:
