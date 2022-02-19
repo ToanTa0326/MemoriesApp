@@ -7,6 +7,7 @@ export const END_LOADING = 'END_LOADING';
 export const START_LOADING = 'START_LOADING';
 export const GET_POST = 'GET_POST';
 export const COMMENT = 'COMMENT';
+export const GET_BY_CREATOR = 'GET_BY_CREATOR';
 
 export const AUTH = 'AUTH';
 export const LOGOUT = 'LOGOUT';

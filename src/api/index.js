@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const API = axios.create({ baseURL: 'https://postcardapi.herokuapp.com/' })
+const API = axios.create({ baseURL: 'https://postcardapi.herokuapp.com' })
 
 API.interceptors.request.use((req) => {
     if(localStorage.getItem('profile')){
@@ -12,6 +12,7 @@ API.interceptors.request.use((req) => {
 
 export const fetchPost = (id) => API.get(`/posts/${id}`);
 export const fetchPosts = (page) => API.get(`/posts?page=${page}`);
+export const fetchPostsByCreator = (name) => API.get(`/posts/creator?name=${name}`);
 export const fetchPostsBySearch = (searchQuery) => API.get(`/posts/search?searchQuery=${searchQuery.search || 'none'}&tags=${searchQuery.tags}`);
 export const creatPost = (newPost) => API.post('/posts', newPost);
 export const updatePost = (id, updatePost) => API.patch(`/posts/${id}`, updatePost);

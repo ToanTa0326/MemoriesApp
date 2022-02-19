@@ -1,4 +1,4 @@
-import {FETCH_ALL, DELETE, UPDATE, CREATE, GET_BY_SEARCH, GET_POST, COMMENT} from '../constants/actionTypes'
+import {FETCH_ALL, DELETE, UPDATE, CREATE, GET_BY_SEARCH, GET_POST, COMMENT, GET_BY_CREATOR} from '../constants/actionTypes'
 
 const posts = (state = {isLoading: true, posts: []},action) => {
     switch (action.type) {
@@ -14,6 +14,7 @@ const posts = (state = {isLoading: true, posts: []},action) => {
                 numberOfPages: action.payload.numberOfPages,
             };
         case GET_BY_SEARCH:
+        case GET_BY_CREATOR:
             return {
                 ...state,
                 posts: action.payload.data,

@@ -1,5 +1,5 @@
 import * as api from '../api';
-import {FETCH_ALL, DELETE, UPDATE, CREATE, GET_BY_SEARCH, START_LOADING, END_LOADING, GET_POST, COMMENT} from '../constants/actionTypes'
+import {FETCH_ALL, DELETE, UPDATE, CREATE, GET_BY_SEARCH, START_LOADING, END_LOADING, GET_POST, COMMENT, GET_BY_CREATOR} from '../constants/actionTypes'
 
 export const fetchPosts = (page) => async (dispatch) => {
     try {
@@ -36,7 +36,19 @@ export const fetchPostsBySearch = (searchQuery) => async (dispatch) => {
     } catch (error) {
         console.log(error);
     }
-  };
+};
+
+export const getPostsByCreator = (name) => async (dispatch) => {
+    try {
+        dispatch({ type: START_LOADING });
+        const { data: { data } } = await api.fetchPostsByCreator(name);
+    
+        dispatch({ type: GET_BY_CREATOR, payload: { data } });
+        dispatch({ type: END_LOADING });
+    } catch (error) {
+        console.log(error);
+    }
+};
 
 export const createPost = (post, navigate) => async (dispatch) => {
     try {

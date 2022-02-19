@@ -1,7 +1,7 @@
 import { AppBar, Avatar, Button, Toolbar, Typography } from '@material-ui/core'
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import memoriesLogo from '../../images/memoriesLogo.png'
 import memoriesText from '../../images/memoriesText.png'
 import useStyles from './NavbarStyle'
@@ -11,13 +11,12 @@ const Navbar = () => {
     const classes = useStyles();
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
     const dispatch = useDispatch()
-    const navigate = useNavigate();
     const location = useLocation()
 
     const logout = () => {
         dispatch({type: "LOGOUT"})
         setUser(null)
-        navigate("/auth")
+        window.location.pathname = "/";
     }
 
     useEffect(() => {
