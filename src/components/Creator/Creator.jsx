@@ -13,6 +13,7 @@ const Creator = () => {
 
   useEffect(() => {
     dispatch(getPostsByCreator(name));
+    // eslint-disable-next-line
   }, []);
 
   if (!posts.length && !isLoading) return 'No posts';
