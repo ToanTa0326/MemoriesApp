@@ -29,6 +29,7 @@ export default makeStyles((theme) => ({
   },
   recommendedPosts: {
     display: 'flex',
+    overflow: 'auto',
     [theme.breakpoints.down('sm')]: {
       flexDirection: 'column',
     },
